@@ -48,4 +48,5 @@ body {
 
 .nav li:hover {
     background-color: #777;
+    transform: scale(1.05);
 }
