@@ -1,5 +1,6 @@
-import About from "./pages/About";
-import Pricing from "./pages/Pricing";
+import Beginner from "./pages/Beginner";
+import Intermediate from "./pages/Intermediate";
+import Advanced from "./pages/Advanced";
 import Home from "./pages/Home";
 import Navbar from "./Navbar";
 import {Route, Routes} from "react-router-dom";
@@ -11,8 +12,9 @@ function App() {
     <div className="container">
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/Pricing" element={<Pricing/>}/>
-        <Route path="/About" element={<About/>}/>
+        <Route path="/Beginner" element={<Beginner/>}/>
+        <Route path="/Intermediate" element={<Intermediate/>}/>
+        <Route path="/Advanced" element={<Advanced/>}/>
       </Routes>
 
     </div>
