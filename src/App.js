@@ -4,8 +4,9 @@ import Advanced from "./pages/Advanced";
 import Home from "./pages/Home";
 import Navbar from "./Navbar";
 import {Route, Routes} from "react-router-dom";
+import Footer from "./components/Footer"
 
-function App() {
+function App() { //Only put stuff here if you want it to show up regardless of page on the website
   return (
     <>
     <Navbar />
@@ -18,6 +19,9 @@ function App() {
       </Routes>
 
     </div>
+    
+    <Footer />
+    
     </>
   )
 }
