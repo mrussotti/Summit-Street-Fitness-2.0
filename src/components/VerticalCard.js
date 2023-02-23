@@ -1,9 +1,9 @@
 import React from 'react';
 import './VerticalCard.css';
 
-const VerticalCard = ({ title, items, color }) => {
+const VerticalCard = ({ title, items, backgroundColor }) => {
   return (
-    <div className="vertical-card" style={{ borderColor: color }}>
+    <div className="vertical-card" style={{ backgroundColor }}>
       <h2 className="vertical-card-title">{title}</h2>
       <ul className="vertical-card-list">
         {items.map((item, index) => (

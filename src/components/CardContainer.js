@@ -10,9 +10,9 @@ const CardContainer = () => {
 
   return (
     <div className="vertical-cards-container">
-      <VerticalCard title="Card 1" items={card1Items} color="#f1c40f" />
-      <VerticalCard title="Card 2" items={card2Items} color="#2ecc71" />
-      <VerticalCard title="Card 3" items={card3Items} color="#e74c3c" />
+      <VerticalCard title="Beginner" items={card1Items} backgroundColor="#39a809" />
+      <VerticalCard title="Intermediate" items={card2Items} backgroundColor="#3d85c6" />
+      <VerticalCard title="Advanced" items={card3Items} backgroundColor="#bd0d0d" />
     </div>
   );
 };
