@@ -1,5 +1,5 @@
 import HeroSection from "../components/HeroSection"
-import CardContainer from "../components/CardContainer"
+import Cards from "../components/Cards"
 
 
 
@@ -9,7 +9,7 @@ export default function Home(){
     
     <>
     <HeroSection/>
-    <CardContainer />
+    <Cards />
 
     </>
     )

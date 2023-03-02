@@ -6,9 +6,10 @@ import './HeroSection.css';
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <video src='/videos/video-1.mp4' autoPlay loop muted />
-      <h1>Title words</h1>
-      <p>Some words that inspire action</p>
+      {/* <video src='/videos/video-1.mp4' autoPlay loop muted /> */}
+      {/* <img src= "./SummitBackground.jpg" alt="Summit Background"/> //use this to cover whole background. change video tag to img */}
+      <h1>Coaching For Everyone</h1>
+      <p>Become your own bodybuilding coach</p>
       <div className='hero-btns'>
         <Button
           className='btns'
