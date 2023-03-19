@@ -1,0 +1,46 @@
+/* PageFormat.css */
+
+.pageTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: red;
+  }
+  
+  /* RectangleCard.css */
+
+.rectangleCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rectangleCardHeading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .rectangleCardText {
+    font-size: 1rem;
+  }
+  
+  
+  
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .calorieCalculatorWrapper {
+    width: 100%;
+  }
+  
