@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './universal.module.css';
 import RectangleCard from '../components/RectangleCard';
 import CalorieCalculator from '../components/CalorieCalculator';
+import MuscleVolumeCalculator from '../components/volumeCalculator';
 
 const text5 = ['do exercises that give you a stim to fatigue ratio. Different people benefit from different things'];
 const text4 = ['decreasing gains as you keep lifting'];
@@ -37,6 +38,9 @@ export default function Intermediate() {
         </div>
         <div className={styles.rectangleCard}>
         <CalorieCalculator/>
+        </div>
+        <div className={styles.rectangleCard}>
+        <MuscleVolumeCalculator/>
         </div>
       </div>
     </>
