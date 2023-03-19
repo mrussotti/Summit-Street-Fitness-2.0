@@ -15,7 +15,7 @@ const Recovery4 = ["Finally, it's worth noting that recovery is not just physica
 
 
 const Diet = ["Gaining and losing weight is largely a matter of creating a calorie surplus or deficit. To gain weight, you need to consume more calories than you burn through exercise and daily activities. For example, if your body requires 2,000 calories per day to maintain your current weight, consuming an additional 500 calories per day would result in a weekly weight gain of approximately 1 pound. Conversely, to lose weight, you need to create a calorie deficit by consuming fewer calories than you burn. For example, reducing your daily intake by 500 calories would result in a weekly weight loss of approximately 1 pound. It's important to note that weight gain and loss is not just about calorie intake, but also the quality of the foods you eat and the type of exercise you do."]
-const Training = ["Start slow. 2-4x a week. 2-5 RIR. Focus on compounds. Form>Weight"]
+const Training = ["For beginners in the gym, starting slow and gradually building up intensity is key. A good starting point is to go 2-4 times a week, allowing for rest and recovery between sessions. In terms of intensity, a good rule of thumb is to aim for 2-5 RIR (reps in reserve), meaning you stop a few reps shy of failure. Compound lifts such as squats, deadlifts, bench press, and rows should be prioritized over isolation exercises. Proper form and technique should be the focus, rather than lifting heavy weights. As you progress and become more comfortable with your training, you can gradually increase intensity and frequency to continue making progress."]
 const Outline = [""]
 export default function Beginner(){
     return ( 
