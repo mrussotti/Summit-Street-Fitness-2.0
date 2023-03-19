@@ -43,4 +43,23 @@
   .calorieCalculatorWrapper {
     width: 100%;
   }
+
+  .pageTitle {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: red;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.calorieCalculatorWrapper {
+    width: 100%;
+}
+
   
