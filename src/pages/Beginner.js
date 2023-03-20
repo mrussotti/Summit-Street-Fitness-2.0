@@ -1,6 +1,8 @@
 
 import RectangleCard from "../components/RectangleCard"; 
 import styles from './universal.module.css';
+import React, { useEffect } from 'react';
+
 
 
 const Progress = ["After many months of beginner gains, you will start to reach a plateau. Your lifts won't be improving and you will feel like you are doing something wrong. You have now reached the intermediate lifting level. It's important to adjust your training program to continue making progress. This may involve incorporating more advanced techniques such as periodization, progressive overload, and accessory exercises. Periodization involves cycling through different training phases to prevent plateaus and promote continued progress. Progressive overload involves gradually increasing the weight or reps of your lifts to challenge your muscles and stimulate growth. Accessory exercises can help to target specific muscle groups and improve weaknesses. It's also important to continue focusing on proper form and technique to prevent injury and maximize results. By staying consistent and making adjustments to your training program, you can continue to make progress and reach your goals. Refer to our Intermediate page for more information."]
@@ -21,6 +23,11 @@ const Diet = ["Gaining and losing weight is largely a matter of creating a calor
 const Training = ["For beginners in the gym, starting slow and gradually building up intensity is key. A good starting point is to go 2-4 times a week, allowing for rest and recovery between sessions. In terms of intensity, a good rule of thumb is to aim for 2-5 RIR (reps in reserve), meaning you stop a few reps shy of failure. Compound lifts such as squats, deadlifts, bench press, and rows should be prioritized over isolation exercises. Proper form and technique should be the focus, rather than lifting heavy weights. As you progress and become more comfortable with your training, you can gradually increase intensity and frequency to continue making progress."]
 const Outline = [""]
 export default function Beginner(){
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return ( 
     <> 
         
