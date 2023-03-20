@@ -6,9 +6,9 @@ Project Goal: Replace the role of a bodybuilding coach in the form of a website
 
 Advantages:
 
-Convenience. An individual will be able to get coaching at will
-Cost. The service will be free
-Accuracy. We will provide sources and conflicting opinions on the scientific stances we take to maximize muscle growth
+- Convenience. An individual will be able to get coaching at will
+- Cost. The service will be free
+- Accuracy. We will provide sources and conflicting opinions on the scientific stances we take to maximize muscle growth
 
 
 
