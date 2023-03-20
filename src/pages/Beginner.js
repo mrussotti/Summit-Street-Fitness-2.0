@@ -1,5 +1,8 @@
 
 import RectangleCard from "../components/RectangleCard"; 
+import styles from './universal.module.css';
+
+
 const Progress = ["After many months of beginner gains, you will start to reach a plateau. Your lifts won't be improving and you will feel like you are doing something wrong. You have now reached the intermediate lifting level. It's important to adjust your training program to continue making progress. This may involve incorporating more advanced techniques such as periodization, progressive overload, and accessory exercises. Periodization involves cycling through different training phases to prevent plateaus and promote continued progress. Progressive overload involves gradually increasing the weight or reps of your lifts to challenge your muscles and stimulate growth. Accessory exercises can help to target specific muscle groups and improve weaknesses. It's also important to continue focusing on proper form and technique to prevent injury and maximize results. By staying consistent and making adjustments to your training program, you can continue to make progress and reach your goals. Refer to our Intermediate page for more information."]
 const Myths = ['Jeff Nippard and RP Mythbusting videos']
 const Etiquette = ["Gym etiquette is essential for a safe and respectful workout environment. When using equipment, it is important to wipe it down with disinfectant after use to prevent the spread of germs. Additionally, if someone is waiting for a machine, offer to let them work in with you or complete your set quickly. When using the mirrors, be aware of your surroundings and give others space to use them too. Don't hog the mirror, and avoid blocking other people's view. Overall, being mindful of others and their needs can make the gym a more enjoyable and productive place for everyone."]
@@ -22,19 +25,37 @@ export default function Beginner(){
     <> 
         
         
-    <h1> Beginner</h1>
+        <h1 className={styles.pageTitle}>Beginner</h1>
+        <div className={styles.rectangleCardContainer}>
+        <div className={styles.rectangleCard}>
     <RectangleCard heading='Outline Your Goals' text= {Outline} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Training' text= {Training} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Diet' text= {Diet} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Recovery' text= {Recovery} text2 = {Recovery2} text3= {Recovery3} text4= {Recovery4} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Supplements To Start With' text= {Supps} text2= {Supps2} text3= {Supps3} text4= {Supps4} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='What Gym Gear Do You Need?' text= {Gear} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Gym Etiquette' text= {Etiquette} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='Myth Busting' text= {Myths} /> 
+    </div>
+    <div className={styles.rectangleCard}>
     <RectangleCard heading='How To Know When You Are An Intermediate Lifter' text= {Progress} /> 
+    </div>
 
-
-
+    </div>
     </> 
     )
 }
