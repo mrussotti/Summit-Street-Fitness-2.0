@@ -1,6 +1,7 @@
 import RectangleCard from "../components/RectangleCard"; 
 import styles from './universal.module.css';
-import React from "react";
+import React, { useEffect } from 'react';
+
 
 const text5 = [
   "Do exercises that give you a stim-to-fatigue ratio. Different people benefit from different things",
@@ -15,6 +16,10 @@ const text1 = [
 ];
 
 export default function Advanced() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
   return (
     <>
     <h1 className={styles.pageTitle}>Intermediate</h1>
