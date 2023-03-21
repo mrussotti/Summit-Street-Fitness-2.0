@@ -1,6 +1,6 @@
 .cards {
   padding: 3rem;
-  background: #f4e8e8;
+  background: #bababa;
 }
 
 h1 {
@@ -26,6 +26,8 @@ h1 {
 }
 
 .cards__item {
+  background: white;
+
   display: flex;
   flex: 1;
   margin: 0 1rem;
