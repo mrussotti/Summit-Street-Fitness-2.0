@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MarkdownCard from "../components/MarkdownCard";
 import styles from './universal.module.css';
 import progress from './BeginnerContent/Progress.md';
@@ -19,9 +20,21 @@ export default function Beginner() {
     etiquetteContent: '',
     gearContent: '',
     recoveryContent: '',
-    trainingContent: '',
     supplementsContent: '',
+    trainingContent: '',
   });
+
+  const [recommendation, setRecommendation] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if there is a stored recommendation in local storage
+    const storedRecommendation = localStorage.getItem('recommendation');
+    if (storedRecommendation) {
+      setRecommendation(storedRecommendation);
+    }
+  }, []);
 
   const fetchMarkdownContent = async (url, contentKey) => {
     try {
@@ -47,51 +60,72 @@ export default function Beginner() {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+  
+    // Decision tree logic
+    const experience = parseFloat(event.target.elements.experience.value);
+    const bodyFat = parseFloat(event.target.elements.bodyFat.value);
+  
+    let recommendation = 'Recomp';
+    
+    if (experience <= 1) {
+      if (bodyFat <= 15) {
+        recommendation = 'Bulk';
+      } else {
+        recommendation = 'Cut';
+      }
+    } else {
+      if (bodyFat <= 10) {
+        recommendation = 'Bulk';
+      } else if (bodyFat >= 20) {
+        recommendation = 'Cut';
+      }
+    }
+  
+    setRecommendation(recommendation);
+    // Save the recommendation to local storage
+    localStorage.setItem('recommendation', recommendation);
+    navigate(`/beginner?recommendation=${recommendation}`);
+  };
+
   return (
     <>
       <h1 className={styles.pageTitle}>Beginner</h1>
-      <div className={styles.rectangleCardContainer}>
+      {!recommendation && (
+        <form onSubmit={handleFormSubmit}>
+          <label htmlFor="experience">Experience (years):</label>
+          <input type="number" name="experience" id="experience" required />
 
-      <div className={styles.rectangleCard}>
-        <MarkdownCard heading='Outline Your Goals' markdownContent={Outline} />
+          <label htmlFor="bodyFat">Body Fat Percentage:</label>
+          <input type="number" name="bodyFat" id="bodyFat" required />
+
+          <button type="submit">Submit</button>
+        </form>
+      )}
+      {recommendation && (
+        <div className={styles.rectangleCardContainer}>
+          {/* Your existing Markdown cards go here */}
+
+          <div className={styles.rectangleCard}>
+            <MarkdownCard heading='Outline Your Goals' markdownContent={Outline} />
+          </div>
+
+          {recommendation === 'Bulk' && (
+            <div className={styles.rectangleCard}>
+              <MarkdownCard heading='Training' markdownContent={content.trainingContent} />
+            </div>
+          )}
+
+          {recommendation === 'Bulk' && (
+            <div className={styles.rectangleCard}>
+              <MarkdownCard heading='Diet' markdownContent={content.dietContent} />
+            </div>
+          )}
+
+          {/* Add more conditional rendering for other Markdown cards as needed */}
         </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Training' markdownContent={content.trainingContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Diet' markdownContent={content.dietContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Recovery' markdownContent={content.recoveryContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Supplements To Start With' markdownContent={content.supplementsContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='What Gym Gear Do You Need?' markdownContent={content.gearContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Gym Etiquette' markdownContent={content.etiquetteContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Myth Busting' markdownContent={Myths} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard
-          heading="How To Know When You Are An Intermediate Lifter"
-          markdownContent={content.progressContent}
-        />
-      </div>
-      </div>
-
+      )}
     </>
   );
 }
