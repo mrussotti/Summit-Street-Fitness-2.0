@@ -1,42 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function RecommendationForm({ onSubmit }) {
-  const handleFormSubmit = (event) => {
+  const [showFollowUpForm, setShowFollowUpForm] = useState(false);
+
+  const handleInitialFormSubmit = (event) => {
     event.preventDefault();
 
-    // Decision tree logic
-    const experience = parseFloat(event.target.elements.experience.value);
-    const bodyFat = parseFloat(event.target.elements.bodyFat.value);
+    const Yes = event.target.elements.Yes.checked;
 
-    let recommendation = 'Recomp';
+    let recommendation = '';
 
-    if (experience <= 1) {
-      if (bodyFat <= 15) {
-        recommendation = 'Bulk';
-      } else {
-        recommendation = 'Cut';
-      }
+    if (Yes) {
+      recommendation = 'Recomp';
+      onSubmit(recommendation);
     } else {
-      if (bodyFat <= 10) {
-        recommendation = 'Bulk';
-      } else if (bodyFat >= 20) {
-        recommendation = 'Cut';
-      }
+      setShowFollowUpForm(true);
+    }
+  };
+
+  const handleFollowUpFormSubmit = (event) => {
+    event.preventDefault();
+    const bulk = event.target.elements.bulk.checked;
+    const cut = event.target.elements.cut.checked;
+
+    let recommendation = '';
+
+    if (bulk) {
+      recommendation = 'Bulk';
+    } else if (cut) {
+      recommendation = 'Cut';
     }
 
     onSubmit(recommendation);
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label htmlFor="experience">Experience (years):</label>
-      <input type="number" name="experience" id="experience" required />
+    <>
+      {!showFollowUpForm ? (
+        <form onSubmit={handleInitialFormSubmit}>
+          <p>
+            Would you consider yourself to be any of the following: a new lifter, a
+            de-trained lifter, or an obese individual?
+          </p>
 
-      <label htmlFor="bodyFat">Body Fat Percentage:</label>
-      <input type="number" name="bodyFat" id="bodyFat" required />
+          <label htmlFor="Yes">Yes</label>
+          <input type="radio" name="userType" id="Yes" />
 
-      <button type="submit">Submit</button>
-    </form>
+          <label htmlFor="No">No</label>
+          <input type="radio" name="userType" id="No" />
+
+          <button type="submit">Submit</button>
+        </form>
+      ) : (
+        <form onSubmit={handleFollowUpFormSubmit}>
+          <p>Would you like to bulk up or cut down?</p>
+
+          <label htmlFor="bulk">Bulk</label>
+          <input type="radio" name="goal" id="bulk" />
+
+          <label htmlFor="cut">Cut</label>
+          <input type="radio" name="goal" id="cut" />
+
+          <button type="submit">Submit</button>
+        </form>
+      )}
+    </>
   );
 }
 
