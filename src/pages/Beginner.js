@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import MarkdownCard from "../components/MarkdownCard";
 import styles from './universal.module.css';
 import progress from './BeginnerContent/Progress.md';
-import diet from './BeginnerContent/Diet.md';
+import bulkDiet from './BeginnerContent/BulkDiet.md';
+import cutDiet from './BeginnerContent/CutDiet.md';
+import RecompDiet from './BeginnerContent/RecompDiet.md';
 import etiquette from './BeginnerContent/GymEtiquette.md';
 import gear from './BeginnerContent/GymGear.md';
 import recovery from './BeginnerContent/Recovery.md';
 import supplements from './BeginnerContent/Supplements.md';
 import training from './BeginnerContent/Training.md';
+import RecommendationForm from '../components/RecommendationForm';
 
 const Myths = ['Jeff Nippard and RP Mythbusting videos'];
 const Outline = [""];
@@ -15,13 +19,19 @@ const Outline = [""];
 export default function Beginner() {
   const [content, setContent] = useState({
     progressContent: '',
-    dietContent: '',
+    BulkDiet: '',
+    CutDiet: '',
+    RecompDiet: '',
     etiquetteContent: '',
     gearContent: '',
     recoveryContent: '',
-    trainingContent: '',
     supplementsContent: '',
+    trainingContent: '',
   });
+
+  const [recommendation, setRecommendation] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const fetchMarkdownContent = async (url, contentKey) => {
     try {
@@ -35,7 +45,9 @@ export default function Beginner() {
 
   useEffect(() => {
     fetchMarkdownContent(progress, 'progressContent');
-    fetchMarkdownContent(diet, 'dietContent');
+    fetchMarkdownContent(bulkDiet, 'BulkDiet');
+    fetchMarkdownContent(cutDiet, 'CutDiet');
+    fetchMarkdownContent(RecompDiet, 'RecompDiet');
     fetchMarkdownContent(etiquette, 'etiquetteContent');
     fetchMarkdownContent(gear, 'gearContent');
     fetchMarkdownContent(recovery, 'recoveryContent');
@@ -43,55 +55,76 @@ export default function Beginner() {
     fetchMarkdownContent(training, 'trainingContent');
   }, []);
 
+//   This makes sure when you load the page you start at the top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleFormSubmit = (recommendation) => {
+    setRecommendation(recommendation);
+    navigate(`/beginner?recommendation=${recommendation}`);
+  };
+
   return (
     <>
       <h1 className={styles.pageTitle}>Beginner</h1>
-      <div className={styles.rectangleCardContainer}>
-
       <div className={styles.rectangleCard}>
         <MarkdownCard heading='Outline Your Goals' markdownContent={Outline} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Training' markdownContent={content.trainingContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Diet' markdownContent={content.dietContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Recovery' markdownContent={content.recoveryContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Supplements To Start With' markdownContent={content.supplementsContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='What Gym Gear Do You Need?' markdownContent={content.gearContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Gym Etiquette' markdownContent={content.etiquetteContent} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard heading='Myth Busting' markdownContent={Myths} />
-        </div>
-        <div className={styles.rectangleCard}>
-
-        <MarkdownCard
-          heading="How To Know When You Are An Intermediate Lifter"
-          markdownContent={content.progressContent}
-        />
       </div>
-      </div>
+      <div className={styles.rectangleCard}>
+        {!recommendation && (
+          <RecommendationForm onSubmit={handleFormSubmit} />
+        )}
+        {recommendation && (
+          <div className={styles.rectangleCardContainer}>
+            {recommendation === 'Bulk' && (
+              <div className={styles.rectangleCard}>
+                <MarkdownCard heading='Mass Gaining Diet' markdownContent={content.BulkDiet} />
+              </div>
+            )}
 
-    </>
-  );
-}
+            {recommendation === 'Cut' && (
+              <div className={styles.rectangleCard}>
+                <MarkdownCard heading='Reduce Body Fat Diet' markdownContent={content.CutDiet} />
+              </div>
+            )}
+
+            {recommendation === 'Recomp' && (
+                <div className={styles.rectangleCard}>
+                <MarkdownCard heading='Body Recomposition Diet' markdownContent={content.RecompDiet} />
+                </div>
+            )}
+            
+            {/* Add more conditional rendering for other Markdown cards as needed */}
+                      </div>
+                    )}
+                  </div>
+            
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='Training' markdownContent={content.trainingContent} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='Recovery' markdownContent={content.recoveryContent} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='Supplements To Start With' markdownContent={content.supplementsContent} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='What Gym Gear Do You Need?' markdownContent={content.gearContent} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='Gym Etiquette' markdownContent={content.etiquetteContent} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard heading='Myth Busting' markdownContent={Myths} />
+                  </div>
+                  <div className={styles.rectangleCard}>
+                    <MarkdownCard
+                      heading="How To Know When You Are An Intermediate Lifter"
+                      markdownContent={content.progressContent}
+                    />
+                  </div>
+                </>
+              );
+            }
+            
