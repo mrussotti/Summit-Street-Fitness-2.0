@@ -30,9 +30,9 @@ const CalorieCalculator = () => {
 
     let bmr;
     if (gender === "male") {
-      bmr = 88.362 + 13.397 * weightMetric + 5.799 * heightMetric - 5.677 * age;
+      bmr = 10 * weightMetric + 6.25 * heightMetric - 5 * age + 5;
     } else {
-      bmr = 447.593 + 9.247 * weightMetric + 3.098 * heightMetric - 4.330 * age;
+      bmr = 10 * weightMetric + 6.25 * heightMetric - 5 * age - 161;
     }
 
     const activityMultiplier = {
@@ -104,27 +104,27 @@ const CalorieCalculator = () => {
         {/* Activity level */}
         <label htmlFor="activity">Activity Level:</label>
         <select
-          name="activity"
-          id="activity"
-                    value={state.activity}
-          onChange={handleChange}
-        >
-          <option value="sedentary">Sedentary</option>
-          <option value="light">Light</option>
-          <option value="moderate">Moderate</option>
-          <option value="active">Active</option>
-          <option value="veryActive">Very Active</option>
-        </select>
-        <button type="submit">Calculate</button>
-      </form>
-      {result && (
-        <p>
-          Based on your input, your estimated daily caloric needs are{" "}
-          <strong>{result}</strong> calories.
-        </p>
-      )}
-    </div>
-  );
+       name="activity"
+       id="activity"
+       value={state.activity}
+       onChange={handleChange}
+     >
+<option value="sedentary">Sedentary</option>
+<option value="light">Light</option>
+<option value="moderate">Moderate</option>
+<option value="active">Active</option>
+<option value="veryActive">Very Active</option>
+</select>
+<button type="submit">Calculate</button>
+</form>
+{result && (
+<p>
+Based on your input, your estimated daily caloric needs are{" "}
+<strong>{result}</strong> calories.
+</p>
+)}
+</div>
+);
 };
 
 export default CalorieCalculator;
