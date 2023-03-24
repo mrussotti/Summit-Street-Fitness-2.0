@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MarkdownCard from "../components/MarkdownCard";
 import styles from './universal.module.css';
 import progress from './BeginnerContent/Progress.md';
@@ -31,7 +31,6 @@ export default function Beginner() {
 
   const [recommendation, setRecommendation] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
 
   const fetchMarkdownContent = async (url, contentKey) => {
     try {
@@ -78,21 +77,17 @@ export default function Beginner() {
         {recommendation && (
           <div className={styles.rectangleCardContainer}>
             {recommendation === 'Bulk' && (
-              <div className={styles.rectangleCard}>
-                <MarkdownCard heading='Mass Gaining Diet' markdownContent={content.BulkDiet} />
-              </div>
+                <MarkdownCard heading='Bulking for Beginner Lifters' markdownContent={content.BulkDiet} />
             )}
 
             {recommendation === 'Cut' && (
-              <div className={styles.rectangleCard}>
-                <MarkdownCard heading='Reduce Body Fat Diet' markdownContent={content.CutDiet} />
-              </div>
+              
+                <MarkdownCard heading='Cutting for Beginner Lifters' markdownContent={content.CutDiet} />
+              
             )}
 
             {recommendation === 'Recomp' && (
-                <div className={styles.rectangleCard}>
-                <MarkdownCard heading='Body Recomposition Diet' markdownContent={content.RecompDiet} />
-                </div>
+                <MarkdownCard heading='Body Recomposition for Beginner Lifters' markdownContent={content.RecompDiet} />
             )}
             
             {/* Add more conditional rendering for other Markdown cards as needed */}
