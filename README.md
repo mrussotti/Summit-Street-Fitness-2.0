@@ -2,7 +2,7 @@
 
 ### Most updated changes will be on the develop branch
 
-Project Goal: Replace the role of a bodybuilding coach in the form of a website 
+Project Goal: Replace the role of a bodybuilding coach in the form of a website and eventually a mobile app
 
 Advantages:
 
