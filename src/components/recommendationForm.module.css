@@ -1,0 +1,52 @@
+/* recommendationForm.module.css */
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    background-color: #f2f2f2;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .formLabel {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1a1a1a;
+  }
+  
+  .radioGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .inputRadio {
+    margin-left: 0.5rem;
+  }
+  
+  .submitButton {
+    margin-top: 1rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+  }
+  
+  .submitButton:hover {
+    background-color: #333;
+  }
+  
+  .formQuestion {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+  }
+  

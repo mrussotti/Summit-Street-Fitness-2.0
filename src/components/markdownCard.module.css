@@ -1,0 +1,37 @@
+/* markdownCard.module.css */
+
+.rectangleCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+    padding: 30px;
+    margin: 20px;
+    border: 2px solid #eee;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .rectangleCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    border-color: #b8b8b8;
+  }
+  
+  .rectangleCardHeading {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  
+  .rectangleCardText {
+    font-size: 1rem;
+    color:#555;
+    text-align: left;
+    line-height: 1.5;
+    }
+  
