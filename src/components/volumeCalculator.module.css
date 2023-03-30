@@ -1,0 +1,58 @@
+/* muscleVolumeCalculator.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+  padding: 30px;
+  margin: 20px;
+  border: 2px solid #eee;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.container:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      border-color: #b8b8b8;
+}
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .muscleCheckbox {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  thead th {
+    background-color: #f2f2f2;
+  }
+
+  .highlightedRow {
+    background-color: rgba(144, 238, 144, 0.3); /* light green with 30% opacity */
+  }
+  

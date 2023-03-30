@@ -1,70 +1,66 @@
-/* navbar.module.css */
-
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #222222;
     padding: 1rem;
-    overflow: visible; /* Add this line */
-  }
-  
-  .siteTitle {
-    color: #ffffff;
+    overflow: visible;
+    }
+    
+    .siteTitle {
+    color: gray;
     text-decoration: none;
     font-size: 24px;
     text-transform: uppercase;
-
-  }
-  
-  ul {
+    }
+    
+    ul {
     display: flex;
     list-style-type: none;
-  }
-  
-  li {
+    }
+    
+    li {
     margin-left: 1rem;
     overflow: visible;
-  }
-  
-  .active {
+    }
+    
+    .active {
     font-weight: bold;
-  }
-  
-  .btn {
+    }
+    
+    .btn {
     font-size: 17px;
     background: transparent;
     border: none;
     padding: 1em 1.5em;
-    color: #ffedd3;
+    color: gray;
     text-transform: uppercase;
     position: relative;
     transition: 0.5s ease;
-    text-decoration: none; /* Add this line */
-
-  }
-  
-  .btn::before {
+    text-decoration: none;
+    }
+    
+    .btn::before {
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: red;
+    background-color: #BB0000;
     transition: 0.5s ease;
-  }
-  
-  .btn:hover {
-    color: #9e9eb7;
+    }
+    
+    .btn:hover {
+    color: #BB0000;
     transition-delay: 0.5s;
-  }
-  
-  .btn:hover::before {
+    }
+    
+    .btn:hover::before {
     width: 100%;
-  }
-  
-  .btn::after {
+    }
+    
+    .btn::after {
     content: "";
     position: absolute;
     left: 0;

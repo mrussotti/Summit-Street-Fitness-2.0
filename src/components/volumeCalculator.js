@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './volumeCalculator.module.css';
 
 const muscleGroups = [
   { name: 'Chest', mev: 8, mavRange: [10, 20] },
@@ -59,50 +60,50 @@ const calculateProgression = (muscleGroup, weeks) => {
     };
   
     return (
-      <div>
+      <div className={styles.container}>
         <h1>Muscle Volume Calculator</h1>
         <div>
-          <h3>Select up to 3 muscle groups to specialize in:</h3>
-          {muscleGroups.map((muscleGroup) => (
-            <label key={muscleGroup.name}>
-              <input
-                type="checkbox"
-                onChange={(event) => handleMuscleSelect(event, muscleGroup)}
-                disabled={
-                  !selectedMuscles.includes(muscleGroup) &&
-                  selectedMuscles.length >= 3
-                }
-              />
-              {muscleGroup.name}
-            </label>
+        <h3>Select up to 3 muscle groups to specialize in:</h3>
+    {muscleGroups.map((muscleGroup) => (
+      <label key={muscleGroup.name} className={styles.muscleCheckbox}>
+        <input
+          type="checkbox"
+          onChange={(event) => handleMuscleSelect(event, muscleGroup)}
+          disabled={
+            !selectedMuscles.includes(muscleGroup) &&
+            selectedMuscles.length >= 3
+          }
+        />
+        {muscleGroup.name}
+      </label>
+    ))}
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Muscle Group</th>
+        <th>MEV</th>
+        <th>MAV</th>
+        {Array.from({ length: 8 }, (_, i) => (
+          <th key={`week-${i + 1}`}>Week {i + 1}</th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {adjustedMuscleGroups.map((muscleGroup, index) => (
+        <tr key={muscleGroup.name} className={  selectedMuscles.includes(muscleGroup.name) ? styles.highlightedRow : ''}>          
+          <td>{muscleGroup.name}</td>
+          <td>{muscleGroup.mev}</td>
+          <td>{muscleGroup.mavRange.join(' - ')}</td>
+          {volumeProgressions[index]?.map((volume, i) => (
+            <td key={`week-${i + 1}`}>{volume}</td>
           ))}
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Muscle Group</th>
-              <th>MEV</th>
-              <th>MAV</th>
-              {Array.from({ length: 8 }, (_, i) => (
-                <th key={`week-${i + 1}`}>Week {i + 1}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {adjustedMuscleGroups.map((muscleGroup, index) => (
-              <tr key={muscleGroup.name}>
-                <td>{muscleGroup.name}</td>
-                <td>{muscleGroup.mev}</td>
-                <td>{muscleGroup.mavRange.join(' - ')}</td>
-                {volumeProgressions[index]?.map((volume, i) => (
-                  <td key={`week-${i + 1}`}>{volume}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    );
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+);
   };
   
   export default MuscleVolumeCalculator;
