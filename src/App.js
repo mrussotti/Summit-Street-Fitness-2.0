@@ -2,7 +2,7 @@ import Beginner from "./pages/Beginner";
 import Intermediate from "./pages/Intermediate";
 import Advanced from "./pages/Advanced";
 import Home from "./pages/Home";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 import {Route, Routes} from "react-router-dom";
 import Footer from "./components/Footer"
 

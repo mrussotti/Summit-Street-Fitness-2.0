@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import styles from "./calorieCalculator.module.css"; 
+
 
 const CalorieCalculator = () => {
   const [state, setState] = useState({
@@ -48,9 +50,9 @@ const CalorieCalculator = () => {
   };
 
   return (
-    <div>
-      <h2>Calorie Calculator</h2>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.calculatorContainer}>
+      <h2 className={styles.calculatorTitle}>Calorie Calculator</h2>
+      <form onSubmit={handleSubmit} className={styles.calculatorForm}>
         {/* Input fields and labels */}
         {/* Measurement Unit */}
         <label htmlFor="unit">Unit:</label>
@@ -115,15 +117,17 @@ const CalorieCalculator = () => {
 <option value="active">Active</option>
 <option value="veryActive">Very Active</option>
 </select>
-<button type="submit">Calculate</button>
-</form>
-{result && (
-<p>
-Based on your input, your estimated daily caloric needs are{" "}
-<strong>{result}</strong> calories.
-</p>
-)}
-</div>
+<button type="submit" className={styles.submitButton}>
+        Calculate
+      </button>
+    </form>
+    {result && (
+      <p className={styles.resultParagraph}>
+        Based on your input, your estimated daily caloric needs are{" "}
+        <strong>{result}</strong> calories.
+      </p>
+    )}
+  </div>
 );
 };
 
