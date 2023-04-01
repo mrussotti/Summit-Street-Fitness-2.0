@@ -9,9 +9,9 @@ export default function Navbar() {
         Summit Street Fitness
       </Link>
       <ul>
-        <CustomLink to="/Beginner">Beginner</CustomLink>
-        <CustomLink to="/Intermediate">Intermediate</CustomLink>
-        <CustomLink to="/Advanced">Advanced</CustomLink>
+        <CustomLink to="/InfoDump">Info Dump</CustomLink>
+        <CustomLink to="/ActionAssist">Action Assist</CustomLink>
+        <CustomLink to="/About">About</CustomLink>
       </ul>
     </nav>
   );
