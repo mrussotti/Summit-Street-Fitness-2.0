@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import styles from "./calorieCalculator.module.css"; 
-
+import styles from "./calorieCalculator.module.css";
 
 const CalorieCalculator = () => {
   const [state, setState] = useState({
@@ -13,6 +12,14 @@ const CalorieCalculator = () => {
   });
 
   const [result, setResult] = useState(null);
+
+  const [halfPoundLoss, setHalfPoundLoss] = useState(null);
+  const [onePoundLoss, setOnePoundLoss] = useState(null);
+  const [twoPoundLoss, setTwoPoundLoss] = useState(null);
+
+  const [halfPoundGain, setHalfPoundGain] = useState(null);
+  const [onePoundGain, setOnePoundGain] = useState(null);
+  const [twoPoundGain, setTwoPoundGain] = useState(null);
 
   const handleChange = (e) => {
     setState({
@@ -47,6 +54,20 @@ const CalorieCalculator = () => {
 
     const calories = bmr * activityMultiplier[activity];
     setResult(Math.round(calories));
+
+    // Calculate calories for weight loss goals
+    const caloriesPerHalfPound = 250;
+    const caloriesPerPound = 500;
+    const caloriesPerTwoPounds = 1000;
+
+    setHalfPoundLoss(Math.round(calories - caloriesPerHalfPound));
+    setOnePoundLoss(Math.round(calories - caloriesPerPound));
+    setTwoPoundLoss(Math.round(calories - caloriesPerTwoPounds));
+
+    // Calculate calories for weight gain goals
+    setHalfPoundGain(Math.round(calories + caloriesPerHalfPound));
+    setOnePoundGain(Math.round(calories + caloriesPerPound));
+    setTwoPoundGain(Math.round(calories + caloriesPerTwoPounds));
   };
 
   return (
@@ -106,29 +127,55 @@ const CalorieCalculator = () => {
         {/* Activity level */}
         <label htmlFor="activity">Activity Level:</label>
         <select
-       name="activity"
-       id="activity"
-       value={state.activity}
-       onChange={handleChange}
-     >
-<option value="sedentary">Sedentary</option>
-<option value="light">Light</option>
-<option value="moderate">Moderate</option>
-<option value="active">Active</option>
-<option value="veryActive">Very Active</option>
-</select>
-<button type="submit" className={styles.submitButton}>
-        Calculate
-      </button>
-    </form>
-    {result && (
-      <p className={styles.resultParagraph}>
-        Based on your input, your estimated daily caloric needs are{" "}
-        <strong>{result}</strong> calories.
-      </p>
-    )}
-  </div>
-);
-};
-
-export default CalorieCalculator;
+          name="activity"
+          id="activity"
+          value={state.activity}
+          onChange={handleChange}
+        >
+          <option value="sedentary">Sedentary</option>
+          <option value="light">Light</option>
+          <option value="moderate">Moderate</option>
+          <option value="active">Active</option>
+          <option value="veryActive">Very Active</option>
+        </select>
+        <button type="submit" className={styles.submitButton}>
+          Calculate
+        </button>
+      </form>
+      {result && (
+        <div>
+          <p className={styles.resultParagraph}>
+            Based on your input, your estimated daily caloric needs are{" "}
+            <strong>{result}</strong> calories.
+          </p>
+          <p className={styles.resultParagraph}>
+            To lose 0.5 lbs per week, consume approximately{" "}
+            <strong>{halfPoundLoss}</strong> calories per day.
+          </p>
+          <p className={styles.resultParagraph}>
+            To lose 1 lb per week, consume approximately{" "}
+            <strong>{onePoundLoss}</strong> calories per day.
+          </p>
+          <p className={styles.resultParagraph}>
+            To lose 2 lbs per week, consume approximately{" "}
+            <strong>{twoPoundLoss}</strong> calories per day.
+          </p>
+          <p className={styles.resultParagraph}>
+            To gain 0.5 lbs per week, consume approximately{" "}
+            <strong>{halfPoundGain}</strong> calories per day.
+          </p>
+          <p className={styles.resultParagraph}>
+            To gain 1 lb per week, consume approximately{" "}
+            <strong>{onePoundGain}</strong> calories per day.
+          </p>
+          <p className={styles.resultParagraph}>
+            To gain 2 lbs per week, consume approximately{" "}
+            <strong>{twoPoundGain}</strong> calories per day.
+          </p>
+        </div>
+      )}
+    </div>
+    );
+  };
+  
+  export default CalorieCalculator;
