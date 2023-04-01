@@ -12,23 +12,23 @@ function Cards() {
           <ul className='cards__items'>
             <CardItem
               src='images/Beginner.png'
-              text='0-2 years of training. If you do not know where to start, click here.'
-              label='Beginner'
-              path='/Beginner'
+              text='All your questions answered'
+              label='InfoDump'
+              path='/InfoDump'
             />
             <CardItem
               src='images/Intermediate.png'
-              text='3-6 years of training. If you think you are here, you are not. Start at beginner.'
-              label='Intermediate'
-              path='/Intermediate'
+              text='Build a plan to achieve your goals'
+              label='ActionAssist'
+              path='/ActionAssist'
             />
           
           
             <CardItem
               src='images/Advanced.png'
-              text='5+ years of training. If this is where you wanna start good luck lmao.'
-              label='Advanced'
-              path='/Advanced'
+              text='Why are we doing this?'
+              label='About'
+              path='/About'
             />
             
           </ul>

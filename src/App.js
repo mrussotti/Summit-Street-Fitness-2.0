@@ -1,6 +1,6 @@
-import Beginner from "./pages/Beginner";
-import Intermediate from "./pages/Intermediate";
-import Advanced from "./pages/Advanced";
+import InfoDump from "./pages/InfoDump";
+import ActionAssist from "./pages/ActionAssist";
+import About from "./pages/About";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import {Route, Routes} from "react-router-dom";
@@ -13,9 +13,9 @@ function App() { //Only put stuff here if you want it to show up regardless of p
     <div className="container">
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/Beginner" element={<Beginner/>}/>
-        <Route path="/Intermediate" element={<Intermediate/>}/>
-        <Route path="/Advanced" element={<Advanced/>}/>
+        <Route path="/InfoDump" element={<InfoDump/>}/>
+        <Route path="/ActionAssist" element={<ActionAssist/>}/>
+        <Route path="/About" element={<About/>}/>
       </Routes>
 
     </div>
