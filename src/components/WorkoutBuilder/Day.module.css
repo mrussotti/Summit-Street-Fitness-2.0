@@ -1,5 +1,5 @@
 .day {
-    border: 1px solid black;
+    background-color: white;
     padding: 1rem;
     min-height: 200px;
     min-width: 200px;
@@ -10,5 +10,26 @@
   
   .dayTitle {
     margin-bottom: 10px;
+  }
+  
+  .day ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .day li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .day input {
+    width: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px;
+    text-align: center;
   }
   
