@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
+import styles from './Day.module.css';
 
 const Day = ({ day }) => {
   const [exercises, setExercises] = useState([]);
@@ -17,15 +18,12 @@ const Day = ({ day }) => {
   return (
     <div
       ref={drop}
+      className={styles.day}
       style={{
-        border: '1px solid black',
-        padding: '1rem',
-        minHeight: '200px',
-        minWidth: '200px',
         background: isOver ? 'lightblue' : 'white',
       }}
     >
-      <h3>{day}</h3>
+      <h3 className={styles.dayTitle}>{day}</h3>
       <ul>
         {exercises.map((exercise, index) => (
           <li key={index}>{exercise.name}</li>

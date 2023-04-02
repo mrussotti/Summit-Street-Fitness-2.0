@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
+import styles from './Exercise.module.css';
 
 const Exercise = ({ name, id }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -13,11 +14,9 @@ const Exercise = ({ name, id }) => {
   return (
     <div
       ref={drag}
+      className={styles.exercise}
       style={{
         opacity: isDragging ? 0.5 : 1,
-        fontSize: 25,
-        fontWeight: 'bold',
-        cursor: 'move',
       }}
     >
       {name}
