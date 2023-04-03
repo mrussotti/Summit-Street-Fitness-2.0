@@ -35,27 +35,31 @@ const Day = ({ day }) => {
       }}
     >
       <h3 className={styles.dayTitle}>{day}</h3>
-      <ul>
+      <ol>
         {exercises.map((exercise, index) => (
           <li key={index}>
-            {exercise.name} -{' '}
-            <input
-              type="number"
-              min="1"
-              value={exercise.sets}
-              onChange={(e) => updateSetsReps(index, e.target.value, exercise.reps)}
-            />{' '}
-            sets x{' '}
-            <input
-              type="number"
-              min="1"
-              value={exercise.reps}
-              onChange={(e) => updateSetsReps(index, exercise.sets, e.target.value)}
-            />{' '}
-            reps
+            <span className={styles.exerciseName}>{exercise.name}:</span>
+            <span>
+              <input
+                type="number"
+                min="1"
+                value={exercise.sets}
+                onChange={(e) => updateSetsReps(index, e.target.value, exercise.reps)}
+              />{' '}
+              sets,
+            </span>
+            <span>
+              <input
+                type="number"
+                min="1"
+                value={exercise.reps}
+                onChange={(e) => updateSetsReps(index, exercise.sets, e.target.value)}
+              />{' '}
+              reps
+            </span>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };

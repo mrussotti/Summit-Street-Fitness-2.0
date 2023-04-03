@@ -19,10 +19,12 @@ const ExerciseScheduler = () => {
   return (
     <DndProvider backend={HTML5Backend}>
       <h1 className={styles.title}>Exercise Scheduler</h1>
-      <div className={styles.container}>
+      <div className={styles.exercisesContainer}>
         {exerciseList.map((exercise) => (
           <Exercise key={exercise.id} id={exercise.id} name={exercise.name} />
         ))}
+      </div>
+      <div className={styles.container}>
         {days.map((day) => (
           <Day key={day} day={day} />
         ))}
