@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Exercise from './Exercise';
 import Day from './Day';
 import { DndProvider } from 'react-dnd';
@@ -13,10 +13,17 @@ const exerciseList = [
   { id: 5, name: 'Sit-ups', muscleGroups: ['Abdominals'] },
 ];
 
-
 const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 const ExerciseScheduler = () => {
+  const [volumeData, setVolumeData] = useState({});
+
+  const handleVolumeUpdate = (day, volume) => {
+    setVolumeData((prevVolumeData) => ({ ...prevVolumeData, [day]: volume }));
+  };
+
+  // You can now access the volume data from the `volumeData` state.
+
   return (
     <DndProvider backend={HTML5Backend}>
       <h1 className={styles.title}>Exercise Scheduler</h1>
@@ -27,7 +34,7 @@ const ExerciseScheduler = () => {
       </div>
       <div className={styles.container}>
         {days.map((day) => (
-          <Day key={day} day={day} />
+          <Day key={day} day={day} onVolumeUpdate={handleVolumeUpdate} />
         ))}
       </div>
     </DndProvider>
