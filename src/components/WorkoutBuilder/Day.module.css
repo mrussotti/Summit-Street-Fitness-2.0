@@ -1,0 +1,48 @@
+.day {
+  background-color: white;
+  padding: 1rem;
+  min-height: 200px;
+  width: 150px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.day:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.dayTitle {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.day ol {
+  list-style-type: decimal;
+  padding: 0;
+}
+
+.day li {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85em;
+}
+
+.exerciseName {
+  font-weight: bold;
+}
+
+.day input {
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px;
+  text-align: center;
+}
+
+.number {
+  font-family: "Arial", sans-serif;
+}
