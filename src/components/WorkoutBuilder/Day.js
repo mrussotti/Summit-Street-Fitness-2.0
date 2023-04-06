@@ -15,10 +15,6 @@ const Day = ({ day }) => {
     }),
   }));
 
-  const calculateTotalSets = () => {
-    return exercises.reduce((acc, exercise) => acc + exercise.sets, 0);
-  };
-
   const updateSetsReps = (index, sets, reps) => {
     setExercises((prevExercises) =>
       prevExercises.map((exercise, idx) => {
@@ -29,7 +25,8 @@ const Day = ({ day }) => {
       }),
     );
   };
-  
+
+  const calculateTotalSets = () => exercises.reduce((acc, exercise) => acc + exercise.sets, 0);
 
   return (
     <div
@@ -62,10 +59,12 @@ const Day = ({ day }) => {
               />{' '}
               reps
             </span>
+            <br />
+            <small>Muscle groups: {exercise.muscleGroups.join(', ')}</small>
           </li>
         ))}
       </ol>
-      <p className={styles.number}>Total sets: {calculateTotalSets()}</p>
+      <p>Total sets: {calculateTotalSets()}</p>
     </div>
   );
 };

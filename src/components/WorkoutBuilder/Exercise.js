@@ -2,10 +2,10 @@ import React from 'react';
 import { useDrag } from 'react-dnd';
 import styles from './Exercise.module.css';
 
-const Exercise = ({ name, id }) => {
+const Exercise = ({ name, id, muscleGroups }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'exercise',
-    item: { id, name },
+    item: { id, name, muscleGroups },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -20,6 +20,8 @@ const Exercise = ({ name, id }) => {
       }}
     >
       {name}
+      <br />
+      <small>Muscle groups: {muscleGroups.join(', ')}</small>
     </div>
   );
 };
