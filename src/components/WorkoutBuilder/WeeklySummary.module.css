@@ -1,4 +1,3 @@
-/* WeeklySummary.module.css */
 .weeklySummary {
     margin-top: 2rem;
     padding: 1rem;
@@ -6,12 +5,25 @@
     border-radius: 4px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
+    transition: 0.3s;
+    }
+    
+    .weeklySummary:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .title {
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
-  }
-  
+    }
+    
+    .weeklySummary p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    }
+    
+    .weeklySummary p:last-child {
+    margin-bottom: 0;
+    }  

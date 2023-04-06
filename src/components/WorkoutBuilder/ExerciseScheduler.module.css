@@ -1,25 +1,24 @@
 .exercisesContainer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .title {
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 
 .addCustomExerciseForm {
   display: flex;
@@ -27,10 +26,46 @@
   gap: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .addCustomExerciseForm input {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: 0.3s;
 }
+
+.addCustomExerciseForm input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.addCustomExerciseForm button {
+  display: block;
+  padding: 0.5rem;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addCustomExerciseForm button:hover {
+  background-color: #0056b3;
+}
+
+.addCustomExerciseForm button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
