@@ -15,16 +15,21 @@ const Day = ({ day }) => {
     }),
   }));
 
+  const calculateTotalSets = () => {
+    return exercises.reduce((acc, exercise) => acc + exercise.sets, 0);
+  };
+
   const updateSetsReps = (index, sets, reps) => {
     setExercises((prevExercises) =>
       prevExercises.map((exercise, idx) => {
         if (index === idx) {
-          return { ...exercise, sets, reps };
+          return { ...exercise, sets: parseInt(sets, 10), reps: parseInt(reps, 10) };
         }
         return exercise;
       }),
     );
   };
+  
 
   return (
     <div
@@ -60,6 +65,7 @@ const Day = ({ day }) => {
           </li>
         ))}
       </ol>
+      <p className={styles.number}>Total sets: {calculateTotalSets()}</p>
     </div>
   );
 };
