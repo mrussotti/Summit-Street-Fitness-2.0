@@ -28,6 +28,23 @@ const Day = ({ day }) => {
 
   const calculateTotalSets = () => exercises.reduce((acc, exercise) => acc + exercise.sets, 0);
 
+  const calculateMuscleGroupVolume = () => {
+    const muscleGroupVolume = {};
+
+    exercises.forEach((exercise) => {
+      const volume = exercise.sets * exercise.reps;
+      exercise.muscleGroups.forEach((muscleGroup) => {
+        if (muscleGroupVolume[muscleGroup]) {
+          muscleGroupVolume[muscleGroup] += volume;
+        } else {
+          muscleGroupVolume[muscleGroup] = volume;
+        }
+      });
+    });
+
+    return muscleGroupVolume;
+  };
+
   return (
     <div
       ref={drop}
@@ -65,6 +82,11 @@ const Day = ({ day }) => {
         ))}
       </ol>
       <p>Total sets: {calculateTotalSets()}</p>
+      {Object.entries(calculateMuscleGroupVolume()).map(([muscleGroup, volume]) => (
+        <p key={muscleGroup}>
+          {muscleGroup}: {volume}
+        </p>
+      ))}
     </div>
   );
 };
