@@ -32,7 +32,7 @@ const Day = ({ day, onVolumeUpdate }) => {
     const muscleGroupVolume = {};
 
     exercises.forEach((exercise) => {
-      const volume = exercise.sets * exercise.reps;
+      const volume = exercise.sets;
       exercise.muscleGroups.forEach((muscleGroup) => {
         if (muscleGroupVolume[muscleGroup]) {
           muscleGroupVolume[muscleGroup] += volume;
