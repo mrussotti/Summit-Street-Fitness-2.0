@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Exercise from './Exercise';
 import Day from './Day';
+import WeeklySummary from './WeeklySummary';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import styles from './ExerciseScheduler.module.css';
@@ -22,8 +23,6 @@ const ExerciseScheduler = () => {
     setVolumeData((prevVolumeData) => ({ ...prevVolumeData, [day]: volume }));
   };
 
-  // You can now access the volume data from the `volumeData` state.
-
   return (
     <DndProvider backend={HTML5Backend}>
       <h1 className={styles.title}>Exercise Scheduler</h1>
@@ -37,6 +36,7 @@ const ExerciseScheduler = () => {
           <Day key={day} day={day} onVolumeUpdate={handleVolumeUpdate} />
         ))}
       </div>
+      <WeeklySummary volumeData={volumeData} />
     </DndProvider>
   );
 };
