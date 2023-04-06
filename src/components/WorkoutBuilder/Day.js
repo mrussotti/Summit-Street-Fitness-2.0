@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import styles from './Day.module.css';
 
-const Day = ({ day }) => {
+const Day = ({ day, onVolumeUpdate }) => {
   const [exercises, setExercises] = useState([]);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -32,7 +32,7 @@ const Day = ({ day }) => {
     const muscleGroupVolume = {};
 
     exercises.forEach((exercise) => {
-      const volume = exercise.sets * exercise.reps;
+      const volume = exercise.sets;
       exercise.muscleGroups.forEach((muscleGroup) => {
         if (muscleGroupVolume[muscleGroup]) {
           muscleGroupVolume[muscleGroup] += volume;
@@ -44,6 +44,12 @@ const Day = ({ day }) => {
 
     return muscleGroupVolume;
   };
+
+  useEffect(() => {
+    if (typeof onVolumeUpdate === 'function') {
+      onVolumeUpdate(day, calculateMuscleGroupVolume());
+    }
+  }, [exercises, onVolumeUpdate]);
 
   return (
     <div
