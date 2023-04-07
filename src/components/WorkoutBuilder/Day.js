@@ -45,6 +45,10 @@ const Day = ({ day, onVolumeUpdate }) => {
     return muscleGroupVolume;
   };
 
+  const handleDeleteExercise = (index) => {
+    setExercises((prevExercises) => prevExercises.filter((_, idx) => idx !== index));
+  };
+
   useEffect(() => {
     if (typeof onVolumeUpdate === 'function') {
       onVolumeUpdate(day, calculateMuscleGroupVolume());
@@ -82,19 +86,20 @@ const Day = ({ day, onVolumeUpdate }) => {
               />{' '}
               reps
             </span>
-            <br />
-            <small>Muscle groups: {exercise.muscleGroups.join(', ')}</small>
-          </li>
-        ))}
-      </ol>
-      <p>Total sets: {calculateTotalSets()}</p>
-      {Object.entries(calculateMuscleGroupVolume()).map(([muscleGroup, volume]) => (
-        <p key={muscleGroup}>
-          {muscleGroup}: {volume}
-        </p>
-      ))}
-    </div>
-  );
+            <button onClick={() => handleDeleteExercise(index)}>Delete</button>
+        <br />
+        <small>Muscle groups: {exercise.muscleGroups.join(', ')}</small>
+      </li>
+    ))}
+  </ol>
+  <p>Total sets: {calculateTotalSets()}</p>
+  {Object.entries(calculateMuscleGroupVolume()).map(([muscleGroup, volume]) => (
+    <p key={muscleGroup}>
+      {muscleGroup}: {volume}
+    </p>
+  ))}
+</div>
+);
 };
 
 export default Day;
