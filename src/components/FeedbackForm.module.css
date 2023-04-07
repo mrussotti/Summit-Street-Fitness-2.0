@@ -44,3 +44,11 @@
     background-color: #0069d9;
   }
   
+  /* Mobile responsive styles */
+  @media screen and (max-width: 768px) {
+    .feedbackForm iframe {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  

@@ -93,7 +93,8 @@ const MesocycleSetsCalculator = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Mesocycle Sets Calculator</h2>
-      <table className={styles.table}>
+      <div className={styles.tableContainer}>
+        <table className={styles.table}>
         <thead>
           <tr>
             <th>Week</th>
@@ -122,6 +123,7 @@ const MesocycleSetsCalculator = () => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };
