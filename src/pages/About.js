@@ -2,14 +2,7 @@ import SplitPage from "../components/SplitPage";
 import styles from './universal.module.css';
 import React, { useEffect } from 'react';
 
-
-
-const text2 = ["Supplementation with amino acids"];
-const text1 = [
-  "If you only make gains when everything is dialed in to the max. This is the place for you.",
-];
-
-export default function Advanced() {
+export default function About() {
 
   useEffect(() => {
     window.scrollTo(0, 0);

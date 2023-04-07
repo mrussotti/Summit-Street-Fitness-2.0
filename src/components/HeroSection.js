@@ -15,16 +15,17 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          to= "/InfoDump"
         >
-          Call To Action
+          Start Learning
         </Button>
         <Button
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
+          to= "/ActionAssist"
         >
-          Link to something <i className='far fa-play-circle' />
+          Build A Plan <i className='far fa-play-circle' />
         </Button>
       </div>
     </div>
