@@ -1,3 +1,4 @@
+/* ExerciseScheduler.module.css */
 .exercisesContainer {
   display: flex;
   justify-content: center;
@@ -7,9 +8,9 @@
 
 .container {
   display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 1200px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
   margin: 0 auto;
 }
 
@@ -69,3 +70,55 @@
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .container {
+    max-width: 320px;
+  }
+}
+
+/* WeeklySummary.module.css */
+.weeklySummary {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.weeklySummary:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.weeklySummary p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.weeklySummary p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .weeklySummary {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

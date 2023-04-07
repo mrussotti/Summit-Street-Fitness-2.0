@@ -4,7 +4,11 @@ import Day from './Day';
 import WeeklySummary from './WeeklySummary';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { isMobile } from 'react-device-detect';
 import styles from './ExerciseScheduler.module.css';
+
+const backend = isMobile ? TouchBackend : HTML5Backend;
 
 const exerciseList = [
   { id: 1, name: 'Push-ups', muscleGroups: ['Chest', 'Triceps', 'Shoulders'] },
@@ -40,7 +44,8 @@ const ExerciseScheduler = () => {
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    
+    <DndProvider backend={backend}>
       <h1 className={styles.title}>Exercise Scheduler</h1>
       <div className={styles.exercisesContainer}>
         {exercises.map((exercise) => (
