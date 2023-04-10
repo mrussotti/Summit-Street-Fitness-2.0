@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Exercise from './Exercise';
 import Day from './Day';
 import WeeklySummary from './WeeklySummary';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { isMobile } from 'react-device-detect';
 import styles from './ExerciseScheduler.module.css';
+
+const backend = isMobile ? TouchBackend : HTML5Backend;
 
 const exerciseList = [
   { id: 1, name: 'Push-ups', muscleGroups: ['Chest', 'Triceps', 'Shoulders'] },
@@ -23,6 +27,8 @@ const ExerciseScheduler = () => {
   const [customExerciseName, setCustomExerciseName] = useState('');
   const [customMuscleGroups, setCustomMuscleGroups] = useState('');
 
+  const dayRefs = useRef(days.map(() => React.createRef()));
+
   const handleVolumeUpdate = (day, volume) => {
     setVolumeData((prevVolumeData) => ({ ...prevVolumeData, [day]: volume }));
   };
@@ -39,12 +45,25 @@ const ExerciseScheduler = () => {
     setCustomMuscleGroups('');
   };
 
+  const handleDaySelect = (exercise, day) => {
+    const dayRef = dayRefs.current.find((ref) => ref.current.day === day);
+    if (dayRef) {
+      dayRef.current.addExercise(exercise);
+    }
+  };
+
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={backend}>
       <h1 className={styles.title}>Exercise Scheduler</h1>
       <div className={styles.exercisesContainer}>
         {exercises.map((exercise) => (
-          <Exercise key={exercise.id} id={exercise.id} name={exercise.name} muscleGroups={exercise.muscleGroups} />
+          <Exercise
+            key={exercise.id}
+            id={exercise.id}
+            name={exercise.name}
+            muscleGroups={exercise.muscleGroups}
+            onDaySelect={handleDaySelect}
+          />
         ))}
       </div>
       <form onSubmit={handleCustomExerciseSubmit} className={styles.addCustomExerciseForm}>
@@ -67,8 +86,8 @@ const ExerciseScheduler = () => {
         <button type="submit">Add custom exercise</button>
       </form>
       <div className={styles.container}>
-        {days.map((day) => (
-          <Day key={day} day={day} onVolumeUpdate={handleVolumeUpdate} />
+        {days.map((day, index) => (
+          <Day key={day} day={day} onVolumeUpdate={handleVolumeUpdate} ref={dayRefs.current[index]} />
         ))}
       </div>
       <WeeklySummary volumeData={volumeData} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import styles from './Day.module.css';
 
-const Day = ({ day, onVolumeUpdate }) => {
+const Day = React.forwardRef(({ day, onVolumeUpdate }, ref) => {
   const [exercises, setExercises] = useState([]);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -45,11 +45,24 @@ const Day = ({ day, onVolumeUpdate }) => {
     return muscleGroupVolume;
   };
 
+  const handleDeleteExercise = (index) => {
+    setExercises((prevExercises) => prevExercises.filter((_, idx) => idx !== index));
+  };
+
   useEffect(() => {
     if (typeof onVolumeUpdate === 'function') {
       onVolumeUpdate(day, calculateMuscleGroupVolume());
     }
   }, [exercises, onVolumeUpdate]);
+
+  const addExercise = (exercise) => {
+    setExercises((prevExercises) => [...prevExercises, { ...exercise, sets: 1, reps: 1 }]);
+  };
+
+  React.useImperativeHandle(ref, () => ({
+    day,
+    addExercise,
+  }));
 
   return (
     <div
@@ -82,6 +95,7 @@ const Day = ({ day, onVolumeUpdate }) => {
               />{' '}
               reps
             </span>
+            <button onClick={() => handleDeleteExercise(index)}>Delete</button>
             <br />
             <small>Muscle groups: {exercise.muscleGroups.join(', ')}</small>
           </li>
@@ -95,6 +109,6 @@ const Day = ({ day, onVolumeUpdate }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Day;

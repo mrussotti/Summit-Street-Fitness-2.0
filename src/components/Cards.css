@@ -7,6 +7,9 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+}
 .cards__container {
   display: flex;
   flex-flow: column;
@@ -27,13 +30,31 @@ h1 {
 
 .cards__item {
   background: white;
-
   display: flex;
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
 }
 
+/* Add media queries for smaller screens */
+@media screen and (max-width: 768px) {
+  .cards__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cards__item {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+}
 .cards__item__link {
   display: flex;
   flex-flow: column;
