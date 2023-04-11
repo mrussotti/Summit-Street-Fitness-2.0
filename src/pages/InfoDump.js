@@ -119,10 +119,10 @@ export default function InfoDump() {
             )}
           
 
-            <MarkdownCard heading='Supplements To Start With' markdownContent={content.supplementsContent} />
-            <MarkdownCard heading='What Gym Gear Do You Need?' markdownContent={content.gearContent} />
-            <MarkdownCard heading='Gym Etiquette' markdownContent={content.etiquetteContent} />
-            <MarkdownCard heading='Myth Busting' markdownContent={Myths} />
+            {/* <MarkdownCard heading='Supplements To Start With' markdownContent={content.supplementsContent} />
+            <MarkdownCard heading='What Gym Gear Do You Need?' markdownContent={content.gearContent} /> */}
+            {/* <MarkdownCard heading='Gym Etiquette' markdownContent={content.etiquetteContent} /> */}
+            {/* <MarkdownCard heading='Myth Busting' markdownContent={Myths} /> */}
             <MarkdownCard
               heading="How To Know When You Are An Intermediate Lifter"
               markdownContent={content.progressContent}
