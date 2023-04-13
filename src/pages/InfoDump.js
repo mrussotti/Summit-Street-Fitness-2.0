@@ -14,7 +14,7 @@ import supplements from './BeginnerContent/Supplements.md';
 import training from './BeginnerContent/Training.md';
 import RecommendationForm from '../components/RecommendationForm';
 
-const Myths = ['Jeff Nippard and RP Mythbusting videos'];
+// const Myths = ['Jeff Nippard and RP Mythbusting videos'];
 const Outline = [""];
 
 export default function InfoDump() {
