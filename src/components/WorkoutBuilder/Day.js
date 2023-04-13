@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
 import styles from './Day.module.css';
 
@@ -28,7 +28,7 @@ const Day = React.forwardRef(({ day, onVolumeUpdate }, ref) => {
 
   const calculateTotalSets = () => exercises.reduce((acc, exercise) => acc + exercise.sets, 0);
 
-  const calculateMuscleGroupVolume = () => {
+  const calculateMuscleGroupVolume = useCallback(() => {
     const muscleGroupVolume = {};
 
     exercises.forEach((exercise) => {
@@ -43,17 +43,16 @@ const Day = React.forwardRef(({ day, onVolumeUpdate }, ref) => {
     });
 
     return muscleGroupVolume;
-  };
+  }, [exercises]);
 
   const handleDeleteExercise = (index) => {
     setExercises((prevExercises) => prevExercises.filter((_, idx) => idx !== index));
   };
 
   useEffect(() => {
-    if (typeof onVolumeUpdate === 'function') {
-      onVolumeUpdate(day, calculateMuscleGroupVolume());
-    }
-  }, [exercises, onVolumeUpdate]);
+    const newTotalVolume = calculateMuscleGroupVolume();
+    onVolumeUpdate(day, newTotalVolume);
+  }, [day, exercises, calculateMuscleGroupVolume, onVolumeUpdate]);
 
   const addExercise = (exercise) => {
     setExercises((prevExercises) => [...prevExercises, { ...exercise, sets: 1, reps: 1 }]);
@@ -92,7 +91,7 @@ const Day = React.forwardRef(({ day, onVolumeUpdate }, ref) => {
                 min="1"
                 value={exercise.reps}
                 onChange={(e) => updateSetsReps(index, exercise.sets, e.target.value)}
-              />{' '}
+              />          {' '}
               reps
             </span>
             <button onClick={() => handleDeleteExercise(index)}>Delete</button>
@@ -108,7 +107,7 @@ const Day = React.forwardRef(({ day, onVolumeUpdate }, ref) => {
         </p>
       ))}
     </div>
-  );
+);
 });
 
-export default Day;
+export default Day;    
